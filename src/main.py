@@ -9,6 +9,18 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 
 client = discord.Client()
 trie = Trie()
+table = {
+    "\"": None,
+    "'": None,
+    "-": None,
+    "`": None,
+    "~": None,
+    ",": None,
+    ".": None,
+    ":": None,
+    ";": None,
+    "_": None
+}
 
 
 def buildTrie():
@@ -45,10 +57,11 @@ async def on_ready():
 @client.event
 async def on_message(message):
     text = message.content
+    text = text.translate(str.maketrans(table))
     author_id = message.author.id
 
     isClean = True
-    message_word_list = [word.replace(",", "").replace(".", "").replace("\"", "") for word in text.split()]
+    message_word_list = text.split()
     for word in message_word_list:
         if trie.search(word):
             isClean = False
