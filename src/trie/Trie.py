@@ -1,13 +1,7 @@
-class TrieNode:
-    _MAX_SIZE = 38
-
-    def __init__(self):
-        self.children = [None] * self._MAX_SIZE
-        self.is_end_of_word = False
+from .TrieNode import TrieNode
 
 
 class Trie:
-
     def __init__(self):
         self.root = self.get_node()
 
@@ -42,57 +36,57 @@ class Trie:
         else:
             return -1
 
-    def insert(self, word):
-        crawler = self.root
-        length = len(word)
-        for i, c in range(length):
+    def insert(self, word, node=None):
+        crawler = self.root if not node else node
+
+        for i, c in enumerate(word):
             index = self._char_to_index(c)
             if not crawler.children[index]:
                 crawler.children[index] = self.get_node()
 
             if c == 'a':
                 word = word[(i+1):]
-                self.insert(self, '4'+word)
-                self.insert(self, '@'+word)
+                self.insert('4'+word, crawler)
+                self.insert('@'+word, crawler)
 
             if c == 'c':
                 word = word[(i+1):]
-                self.insert(self, '('+word)
-                self.insert(self, '[' + word)
+                self.insert('('+word, crawler)
+                self.insert('[' + word, crawler)
 
             if c == 'g':
                 word = word[(i+1):]
-                self.insert(self, '6'+word)
+                self.insert('6'+word, crawler)
 
             if c == 'i':
                 word = word[(i+1):]
-                self.insert(self, '|'+word)
+                self.insert('|'+word, crawler)
 
             if c == 'j':
                 word = word[(i+1):]
-                self.insert(self, ']'+word)
+                self.insert(']'+word, crawler)
 
             if c == 'l':
                 word = word[(i+1):]
-                self.insert(self, 'l'+word)
+                self.insert('1'+word, crawler)
 
             if c == 'o':
                 word = word[(i+1):]
-                self.insert(self, '0'+word)
+                self.insert('0'+word, crawler)
 
             if c == 's':
                 word = word[(i+1):]
-                self.insert(self, '5'+word)
+                self.insert('5'+word, crawler)
 
             if c == 't':
                 word = word[(i+1):]
-                self.insert(self, '7'+word)
+                self.insert('7'+word, crawler)
 
             if c == 'z':
                 word = word[(i+1):]
-                self.insert(self, '2'+word)
+                self.insert('2'+word, crawler)
 
-            crawler = crawler.children[c]
+            crawler = crawler.children[index]
 
         crawler.is_end_of_word = True
 
