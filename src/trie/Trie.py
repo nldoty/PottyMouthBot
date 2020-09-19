@@ -37,6 +37,7 @@ class Trie:
             return -1
 
     def insert(self, word, node=None):
+        print(word)
         crawler = self.root if not node else node
 
         for i, c in enumerate(word):
@@ -45,46 +46,51 @@ class Trie:
                 crawler.children[index] = self.get_node()
 
             if c == 'a':
-                word = word[(i+1):]
-                self.insert('4'+word, crawler)
-                self.insert('@'+word, crawler)
+                temp = word[(i+1):]
+                self.insert('4'+temp, crawler)
+                self.insert('@'+temp, crawler)
 
             if c == 'c':
-                word = word[(i+1):]
-                self.insert('('+word, crawler)
-                self.insert('[' + word, crawler)
+                temp = word[(i+1):]
+                self.insert('('+temp, crawler)
+                self.insert('[' + temp, crawler)
+
+            if c == 'e':
+                temp = word[(i+1):]
+                self.insert('3'+temp, crawler)
 
             if c == 'g':
-                word = word[(i+1):]
-                self.insert('6'+word, crawler)
+                temp = word[(i+1):]
+                self.insert('6'+temp, crawler)
 
             if c == 'i':
-                word = word[(i+1):]
-                self.insert('|'+word, crawler)
+                temp = word[(i+1):]
+                self.insert('|'+temp, crawler)
 
             if c == 'j':
-                word = word[(i+1):]
-                self.insert(']'+word, crawler)
+                temp = word[(i+1):]
+                self.insert(']'+temp, crawler)
 
             if c == 'l':
-                word = word[(i+1):]
-                self.insert('1'+word, crawler)
+                temp = word[(i+1):]
+                self.insert('1'+temp, crawler)
 
             if c == 'o':
-                word = word[(i+1):]
-                self.insert('0'+word, crawler)
+                temp = word[(i+1):]
+                self.insert('0'+temp, crawler)
 
             if c == 's':
-                word = word[(i+1):]
-                self.insert('5'+word, crawler)
+                temp = word[(i+1):]
+                self.insert('5'+temp, crawler)
+                self.insert('$'+temp, crawler)
 
             if c == 't':
-                word = word[(i+1):]
-                self.insert('7'+word, crawler)
+                temp = word[(i+1):]
+                self.insert('7'+temp, crawler)
 
             if c == 'z':
-                word = word[(i+1):]
-                self.insert('2'+word, crawler)
+                temp = word[(i+1):]
+                self.insert('2'+temp, crawler)
 
             crawler = crawler.children[index]
 
@@ -98,6 +104,7 @@ class Trie:
         for char in word:
             index = self._char_to_index(char)
             if not crawler.children[index]:
+                print("Char not found: " + char)
                 return False
             crawler = crawler.children[index]
 

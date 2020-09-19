@@ -59,16 +59,18 @@ async def on_message(message):
     text = message.content
     text = text.translate(str.maketrans(table))
     author_id = message.author.id
+    print(message.author.id)
 
-    isClean = True
-    message_word_list = text.split()
-    for word in message_word_list:
-        if trie.search(word):
-            isClean = False
-            break
-    if not isClean:
-        await message.delete()
-        await message.channel.send(punish_user(author_id))
+    if author_id != 756276859225768057:
+        isClean = True
+        message_word_list = text.split()
+        for word in message_word_list:
+            if trie.search(word):
+                isClean = False
+                break
+        if not isClean:
+            await message.delete()
+            await message.channel.send(punish_user(author_id))
 
 
 client.run(TOKEN)
