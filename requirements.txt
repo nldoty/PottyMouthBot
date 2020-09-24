@@ -1,0 +1,12 @@
+aiohttp==3.6.2
+async-timeout==3.0.1
+attrs==20.2.0
+chardet==3.0.4
+discord.py==1.4.1
+idna==2.10
+multidict==4.7.6
+pip==20.2.3
+python-dotenv==0.14.0
+setuptools==41.2.0
+typing-extensions==3.7.4.3
+yarl==1.5.1
