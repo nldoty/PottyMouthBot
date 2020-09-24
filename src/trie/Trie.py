@@ -37,7 +37,6 @@ class Trie:
             return -1
 
     def insert(self, word, node=None):
-        print(word)
         crawler = self.root if not node else node
 
         for i, c in enumerate(word):
