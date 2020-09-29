@@ -13,3 +13,10 @@ The bot operates by searching all incoming messages for bad words found in `src/
  
  ### Bugs/Requests
  If you have any requests or bugs to report, feel free to report an [issue here](https://github.com/nldoty/PottyMouthBot/issues).
+ 
+ ### Docker commands
+To build the docker container, run the following command from the top level folder:     
+`docker build -t pottybot .`
+
+To run the container, tagged and in detached mode, run the following command:         
+`docker run --name discord_pottybot -d pottybot`
