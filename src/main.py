@@ -59,7 +59,6 @@ async def on_message(message):
     text = message.content
     text = text.translate(str.maketrans(table))
     author_id = message.author.id
-    print(message.author.id)
 
     if author_id != 756276859225768057:
         isClean = True

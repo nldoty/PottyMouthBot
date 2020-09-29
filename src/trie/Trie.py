@@ -23,7 +23,8 @@ class Trie:
             '|': 35,
             '@': 36,
             '$': 37,
-            '[': 38
+            '[': 38,
+            '!': 39
         }
         c = c.lower()
 
@@ -65,6 +66,7 @@ class Trie:
             if c == 'i':
                 temp = word[(i+1):]
                 self.insert('|'+temp, crawler)
+                self.insert('!'+temp, crawler)
 
             if c == 'j':
                 temp = word[(i+1):]
